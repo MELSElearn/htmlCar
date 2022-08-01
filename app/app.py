@@ -13,7 +13,7 @@ def hello_world():
         return render_template('index.html', href2='static/none.png', href3='')
     else:
         myage = request.form['age']
-        mysalary = request.form['gender']
+        mysalary = request.form['salary']
         myrange = ''
 
         if '1000' in mysalary:
