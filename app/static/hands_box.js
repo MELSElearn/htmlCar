@@ -10,7 +10,6 @@ const canvasCtx2 = canvasElement2.getContext('2d');
 
 var age = 0;
 var salary = 0;
-var salarystr = "";
 var counter = 0;
 
 var video = document.querySelector("#input_video");
@@ -36,97 +35,64 @@ function onResults(results) {
   }
   canvasCtx.font = "20px Arial";
   canvasCtx.fillText("Enter Your Age :" + age, 10, 20);
-  canvasCtx.fillText("Select range of salary : " + salarystr, 10, 150);
+  canvasCtx.fillText("Enter Your Salary : " + salary, 10, 200);
   canvasCtx.fillText("Press the button:", 10, 360);
   canvasCtx.fillText("Submit ", 200, 400);
   canvasCtx.font = "40px Arial";
-  canvasCtx.fillText("+", 75, 80);
-  canvasCtx.fillText("-", 225, 80);
-  canvasCtx.font = "15px Arial";
-  canvasCtx.fillText("0-2000", 60, 210);
-  canvasCtx.fillText("2001-4000", 210, 210);
-  canvasCtx.fillText("4001-6000", 360, 210);
-  canvasCtx.fillText("6001-8000", 60, 280);
-  canvasCtx.fillText("8001 above", 210, 280);
+  canvasCtx.fillText("+", 75, 100);
+  canvasCtx.fillText("-", 225, 100);
+  canvasCtx.fillText("+", 75, 280);
+  canvasCtx.fillText("-", 225, 280);
   canvasCtx.restore();
   
   let src = cv.imread('output_canvas');
-  if (cx > 50 && cx < 150 && cy > 50 && cy<100 && counter==1) 
+  if (cx > 50 && cx < 150 && cy > 50 && cy<150 && counter==1) 
   {
     age = age + 1;
     if (age>99){
       age = 99;
     }
-	  cv.rectangle(src, new cv.Point(50, 50), new cv.Point(150, 100), [0, 255, 0, 255], -1); //RGBA - A for alpha
+	  cv.rectangle(src, new cv.Point(50, 50), new cv.Point(150, 150), [0, 255, 0, 255], -1); //RGBA - A for alpha
   }else
   {
-	  cv.rectangle(src, new cv.Point(50, 50), new cv.Point(150, 100), [255, 0, 0, 255], 4); //RGBA - A for alpha
+	  cv.rectangle(src, new cv.Point(50, 50), new cv.Point(150, 150), [255, 0, 0, 255], 4); //RGBA - A for alpha
   }
   
-  if (cx > 200 && cx < 300 && cy > 50 && cy<100 && counter==1)
+  if (cx > 200 && cx < 300 && cy > 100 && cy<200 && counter==1)
   {
     age = age - 1;
     if (age<0){
       age = 0
     }
-	  cv.rectangle(src, new cv.Point(200, 50), new cv.Point(300, 100), [0, 255, 0, 255], -1); //RGBA - A for alpha
+	  cv.rectangle(src, new cv.Point(200, 50), new cv.Point(300, 150), [0, 255, 0, 255], -1); //RGBA - A for alpha
   }else
   {
-	  cv.rectangle(src, new cv.Point(200, 50), new cv.Point(300, 100), [255, 0, 0, 255], 4); //RGBA - A for alpha
+	  cv.rectangle(src, new cv.Point(200, 50), new cv.Point(300, 150), [255, 0, 0, 255], 4); //RGBA - A for alpha
   }
 
+  if (cx > 50 && cx < 150 && cy > 230 && cy<330 && counter==1)
+  {
+    salary = salary + 100;
+    if (age>10000){
+      salary = 10000;
+    }
+	  cv.rectangle(src, new cv.Point(50, 230), new cv.Point(150, 330), [0, 255, 0, 255], -1); //RGBA - A for alpha
+  }else
+  {
+	  cv.rectangle(src, new cv.Point(50, 230), new cv.Point(150, 330), [255, 0, 0, 255], 4); //RGBA - A for alpha
+  }
   
-  if (cx > 50 && cx < 150 && cy > 180 && cy<230 && counter==1)
+  if (cx > 200 && cx < 300 && cy > 230 && cy<330 && counter==1)
   {
-    salary = 1000;
-    salarystr = "0-2000";
-	  cv.rectangle(src, new cv.Point(50, 180), new cv.Point(150, 230), [0, 255, 0, 255], -1); //RGBA - A for alpha
+    salary = salary - 100;
+    if (age<0){
+      salary = 0;
+    }
+	  cv.rectangle(src, new cv.Point(200, 230), new cv.Point(300, 330), [0, 255, 0, 255], -1); //RGBA - A for alpha
   }else
   {
-	  cv.rectangle(src, new cv.Point(50, 180), new cv.Point(150, 230), [255, 0, 0, 255], 4); //RGBA - A for alpha
+	  cv.rectangle(src, new cv.Point(200, 230), new cv.Point(300, 330), [255, 0, 0, 255], 4); //RGBA - A for alpha
   }
-
-  if (cx > 200 && cx < 300 && cy > 180 && cy<230 && counter==1)
-  {
-    salary = 3000;
-    salarystr = "2001-4000";
-	  cv.rectangle(src, new cv.Point(200, 180), new cv.Point(300, 230), [0, 255, 0, 255], -1); //RGBA - A for alpha
-  }else
-  {
-	  cv.rectangle(src, new cv.Point(200, 180), new cv.Point(300, 230), [255, 0, 0, 255], 4); //RGBA - A for alpha
-  }
-
-  if (cx > 350 && cx < 450 && cy > 180 && cy<230 && counter==1)
-  {
-    salary = 5000;
-    salarystr = "4001-6000";
-	  cv.rectangle(src, new cv.Point(350, 180), new cv.Point(450, 230), [0, 255, 0, 255], -1); //RGBA - A for alpha
-  }else
-  {
-	  cv.rectangle(src, new cv.Point(350, 180), new cv.Point(450, 230), [255, 0, 0, 255], 4); //RGBA - A for alpha
-  }
-
-  if (cx > 50 && cx < 150 && cy > 250 && cy<300 && counter==1)
-  {
-    salary = 7000;
-    salarystr = "6001-8000";
-	  cv.rectangle(src, new cv.Point(50, 250), new cv.Point(150, 300), [0, 255, 0, 255], -1); //RGBA - A for alpha
-  }else
-  {
-	  cv.rectangle(src, new cv.Point(50, 250), new cv.Point(150, 300), [255, 0, 0, 255], 4); //RGBA - A for alpha
-  }
-
-  if (cx > 200 && cx < 300 && cy > 250 && cy<300 && counter==1)
-  {
-    salary = 9000;
-    salarystr = "8001 above";
-	  cv.rectangle(src, new cv.Point(200, 250), new cv.Point(300, 300), [0, 255, 0, 255], -1); //RGBA - A for alpha
-  }else
-  {
-	  cv.rectangle(src, new cv.Point(200, 250), new cv.Point(300, 300), [255, 0, 0, 255], 4); //RGBA - A for alpha
-  }
-
- 
 
   if (cx > 180 && cx < 280 && cy > 350 && cy<450 && counter==1)
   {
