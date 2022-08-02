@@ -14,21 +14,6 @@ def hello_world():
     else:
         myage = request.form['age']
         mysalary = request.form['salary']
-        myrange = ''
-
-        if '1000' in mysalary:
-            myrange = '0-2000'
-        elif '3000' in mysalary:
-            myrange = '2001-4000'
-        elif '5000' in mysalary:
-            myrange = '4001-6000'
-        elif '7000' in mysalary:
-            myrange = '6001-7000'
-        elif '9000' in mysalary:
-            myrange = '8001 above'
-        else:
-            myrange = '0'
-        
         mycar = ''
         if str(myage) =='' or str(mysalary) =='':
             return render_template('index.html', href2='static/none.png', href3='Please insert your age and salary.')
@@ -49,6 +34,6 @@ def hello_world():
             else:
                 mycar = 'static/none.png' 
                 
-            return render_template('index.html', href2=str(mycar), href3='This is the recommendation! (age:'+str(myage)+' ,salary:'+str(myrange)+') is:'+predictions_to_str)
+            return render_template('index.html', href2=str(mycar), href3='This is the recommendation! (age:'+str(myage)+' ,salary:'+str(mysalary)+'):'+predictions_to_str)
         
 
